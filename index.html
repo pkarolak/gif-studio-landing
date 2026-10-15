@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gif-studio — marketing GIFs your agent makes from your repo</title>
+  <meta name="description" content="npx gif-studio: your AI agent runs your app, finds the core journeys, records them and exports looping GIFs, MP4s and stills. You review in a studio and say “apply notes from v2”." />
+  <meta property="og:title" content="gif-studio" />
+  <meta property="og:description" content="Marketing GIFs and MP4s your agent makes from your repo." />
+  <meta property="og:image" content="assets/hero-poster.png" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f6fed'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top"><span class="logo" aria-hidden="true">▶</span>gif-studio</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#agents">For agents</a>
+      <a href="#studio">Studio</a>
+      <a class="button ghost" href="https://github.com/pkarolak/gif-studio">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Open source · MIT · runs on your machine</p>
+      <h1>Marketing GIFs your agent makes <span class="grad">from your repo</span></h1>
+      <p class="lede">Point your AI agent at an app, a folder of screenshots or a brief. It runs the app, finds the core journeys, records them and exports looping GIFs, crisp MP4s and stills. You scrub, leave notes, and say <em>“apply notes from v2”</em>.</p>
+      <div class="install">
+        <code id="install-cmd">npx gif-studio init</code>
+        <button type="button" class="copy" data-copy="npx gif-studio init" aria-label="Copy install command">Copy</button>
+      </div>
+      <p class="hint">Then ask your agent: <strong>“Make a marketing GIF of the core flow of this app.”</strong></p>
+
+      <figure class="showcase">
+        <div class="window">
+          <div class="window-bar"><span></span><span></span><span></span><b>hero-v1-10.9s.mp4</b></div>
+          <video src="assets/hero.mp4" poster="assets/hero-poster.png" autoplay muted loop playsinline aria-label="A product walkthrough GIF made by gif-studio"></video>
+        </div>
+        <figcaption>Made by gif-studio from the demo app in the repo: scanned, explored, recorded and rendered with no hand-made frames. <a href="assets/hero.gif">Download the GIF</a> (1.7 MB).</figcaption>
+      </figure>
+    </section>
+
+    <section id="how" class="section">
+      <h2>From repo to <span class="grad">final/</span> in one loop</h2>
+      <ol class="steps">
+        <li>
+          <span class="num">1</span>
+          <h3>Scan</h3>
+          <p>Works out what's here: app, static site, images or docs. Framework, dev command, routes, brand colors, fonts, logos, README pitch, demo accounts.</p>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <h3>Explore</h3>
+          <p>Starts the app, crawls it in a real browser and screenshots every page. Your agent looks and picks the journeys worth showing.</p>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <h3>Record</h3>
+          <p>Replays each journey and saves hi-res plates: every state, plus the box of the element that was clicked. Records real footage too, for motion.</p>
+        </li>
+        <li>
+          <span class="num">4</span>
+          <h3>Compose</h3>
+          <p>Builds a seekable <code>scene.html</code> from a template, with a camera that follows the action, a human cursor, typing and captions.</p>
+        </li>
+        <li>
+          <span class="num">5</span>
+          <h3>Render</h3>
+          <p>Captures frame by frame in headless Chrome. Exports a palette-optimized GIF, an H.264 MP4 at 2x, and a still for every beat.</p>
+        </li>
+        <li>
+          <span class="num">6</span>
+          <h3>Review & ship</h3>
+          <p>You leave notes in the studio. Your agent applies them as v2, v3… Then <code>promote</code> copies the version you pick into <code>final/</code>.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="agents" class="section split">
+      <div>
+        <h2>Built for agents first</h2>
+        <p>Install it once and your agent knows what to do. No prompt engineering.</p>
+        <ul class="checks">
+          <li><strong>A playbook.</strong> <code>gif-studio guide</code> covers the whole workflow, the decision tree, the scene API and the quality bar.</li>
+          <li><strong>A local MCP server.</strong> 30 tools, registered by <code>init</code> for Cursor and Claude Code. Screenshots and contact sheets come back as images the agent can see.</li>
+          <li><strong>A CLI that talks JSON.</strong> Every command returns <code>{ok, data, summary, next}</code>, with the next step spelled out.</li>
+          <li><strong>A skill.</strong> Triggers on “make a marketing GIF”, “animate this flow” or “apply notes from v3”.</li>
+          <li><strong>Logins handled.</strong> Seed accounts from your repo, or a one-time sign-in that's saved and reused.</li>
+        </ul>
+      </div>
+      <div class="terminal" role="img" aria-label="Example agent session">
+        <div class="window-bar"><span></span><span></span><span></span><b>agent</b></div>
+<pre><span class="c"># the agent's first moves</span>
+<span class="p">$</span> gif-studio status --json
+<span class="o">{"ok": true, "next": ["gif-studio scan"]}</span>
+<span class="p">$</span> gif-studio scan
+<span class="o">Kind: app (Plannr) · dev "npm run dev", port 4610
+Brand: #6c4cf5 #2a1a7a; fonts Inter
+Seed accounts: demo@plannr.test</span>
+<span class="p">$</span> gif-studio app start && gif-studio explore
+<span class="o">2 pages · suggested: create-project</span>
+<span class="p">$</span> gif-studio record create-project
+<span class="o">4 plates (2x)</span>
+<span class="p">$</span> gif-studio new hero --journey create-project
+<span class="p">$</span> gif-studio render hero
+<span class="o">hero-v1-10.9s.mp4 (0.8 MB)
+hero-v1-10.9s.gif (1.7 MB) · 4 stills</span>
+<span class="p">$</span> gif-studio studio --background
+<span class="o">Studio running at http://localhost:4455</span></pre>
+      </div>
+    </section>
+
+    <section id="studio" class="section">
+      <h2>A studio for the human in the loop</h2>
+      <p class="center-lede">Scrub, step frame by frame, click anywhere on the frame to pin a note to that moment, paste in a reference image, tune the pacing of each section. Notes you left on v1 show as “Covered in v2” when the next version lands.</p>
+      <figure class="studio-shot">
+        <img src="assets/studio.png" alt="gif-studio review studio: a scene player with a pinned note, a timeline with sections and beats, and a notes panel" />
+      </figure>
+      <div class="grid3">
+        <div class="card"><h3>Pinned notes</h3><p>Every note has a time and a position, and can carry images. Your agent gets them as a markdown checklist.</p></div>
+        <div class="card"><h3>Pacing</h3><p>One slider per section. Faster intro, longer hold on the result. The next export picks it up.</p></div>
+        <div class="card"><h3>Versions</h3><p>Every render is a frozen vN with its own scene snapshot, GIF, MP4 and stills. Compare, download, promote.</p></div>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <h2>Formats for everywhere it ships</h2>
+        <ul class="formats">
+          <li><b>16:9</b> product pages, docs, slides</li>
+          <li><b>1:1</b> social feeds</li>
+          <li><b>4:5</b> LinkedIn, Instagram</li>
+          <li><b>9:16</b> stories and shorts; the camera crops and pans to each action</li>
+          <li><b>modal</b> and <b>card</b> in-product announcements</li>
+        </ul>
+        <p>Templates: product walkthrough, feature highlight, step-card loop, before/after, and synthetic UI for features that aren't built yet.</p>
+      </div>
+      <div>
+        <h2>Scenes are just HTML</h2>
+        <p>A scene is a page that can draw any moment on request. That keeps renders frame-exact and diffs readable, and an agent can edit one like any other file.</p>
+<pre class="code"><span class="k">import</span> {createScene} <span class="k">from</span> <span class="s">'/__studio/runtime.js'</span>;
+
+<span class="k">const</span> scene = createScene({width: <span class="n">960</span>, height: <span class="n">540</span>});
+<span class="k">const</span> cursor = scene.cursor({name: <span class="s">'Alex'</span>});
+<span class="k">let</span> t = cursor.moveTo(<span class="n">400</span>, <span class="n">800</span>, {x: <span class="n">420</span>, y: <span class="n">300</span>});
+t = cursor.click(t);
+t = scene.type(field, {at: t, text: <span class="s">'Q3 launch plan'</span>});
+scene.beat(t, <span class="s">'Typed'</span>);
+scene.done({duration: t + <span class="n">1500</span>});</pre>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Make your first GIF in five minutes</h2>
+      <div class="install">
+        <code>npx gif-studio init</code>
+        <button type="button" class="copy" data-copy="npx gif-studio init" aria-label="Copy install command">Copy</button>
+      </div>
+      <p class="hint">Node 20+ and Chrome or Edge. ffmpeg is bundled. Everything runs locally.</p>
+      <div class="cta-links">
+        <a class="button primary" href="https://github.com/pkarolak/gif-studio">View on GitHub</a>
+        <a class="button ghost" href="https://www.npmjs.com/package/gif-studio">npm</a>
+        <a class="button ghost" href="https://github.com/pkarolak/gif-studio/blob/main/AGENTS.md">Agent playbook</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>gif-studio · MIT</span>
+    <span>The animation at the top was made with gif-studio.</span>
+  </footer>
+
+  <script>
+    for (const button of document.querySelectorAll('[data-copy]')) {
+      button.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(button.dataset.copy);
+        button.textContent = 'Copied';
+        setTimeout(() => (button.textContent = 'Copy'), 1500);
+      });
+    }
+  </script>
+</body>
+</html>
